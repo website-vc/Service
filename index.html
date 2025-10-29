@@ -1448,17 +1448,7 @@
                 { name: 'सिमरन', age: 20, location: 'पुणे', online: true, rating: 4.5, image: 'https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=150&h=150&fit=crop&crop=face' },
                 { name: 'नीहा', age: 23, location: 'अहमदाबाद', online: false, rating: 4.7, image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&h=150&fit=crop&crop=face' },
                 { name: 'कृतिका', age: 24, location: 'जयपुर', online: true, rating: 4.8, image: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=150&h=150&fit=crop&crop=face' },
-                { name: 'दिव्या', age: 21, location: 'लखनऊ', online: true, rating: 4.6, image: 'https://images.unsplash.com/photo-1517365830460-955ce3ccd263?w=150&h=150&fit=crop&crop=face' },
-                { name: 'माधुरी', age: 26, location: 'इंदौर', online: false, rating: 4.9, image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&h=150&fit=crop&crop=face' },
-                { name: 'साक्षी', age: 22, location: 'भोपाल', online: true, rating: 4.7, image: 'https://images.unsplash.com/photo-1517365830460-955ce3ccd263?w=150&h=150&fit=crop&crop=face' },
-                { name: 'तन्वी', age: 23, location: 'सूरत', online: true, rating: 4.8, image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face' },
-                { name: 'ईशा', age: 24, location: 'वडोदरा', online: false, rating: 4.6, image: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=150&h=150&fit=crop&crop=face' },
-                { name: 'अदिति', age: 21, location: 'आगरा', online: true, rating: 4.9, image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face' },
-                { name: 'मोनिका', age: 25, location: 'नासिक', online: true, rating: 4.7, image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&h=150&fit=crop&crop=face' },
-                { name: 'स्नेहा', age: 22, location: 'मैसूर', online: false, rating: 4.8, image: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=150&h=150&fit=crop&crop=face' },
-                { name: 'पायल', age: 23, location: 'जबलपुर', online: true, rating: 4.5, image: 'https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=150&h=150&fit=crop&crop=face' },
-                { name: 'राधिका', age: 24, location: 'ग्वालियर', online: true, rating: 4.8, image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face' },
-                { name: 'वैष्णवी', age: 21, location: 'कोच्चि', online: false, rating: 4.7, image: 'https://images.unsplash.com/photo-1517365830460-955ce3ccd263?w=150&h=150&fit=crop&crop=face' }
+                { name: 'दिव्या', age: 21, location: 'लखनऊ', online: true, rating: 4.6, image: 'https://images.unsplash.com/photo-1517365830460-955ce3ccd263?w=150&h=150&fit=crop&crop=face' }
             ];
             
             // Add more girls to reach 50+
@@ -1724,29 +1714,48 @@
                     return;
                 }
                 
-                // Register user with Supabase
-                const { data, error } = await supabase.auth.signUp({
-                    phone: `+91${mobileNumber}`,
-                    password: password,
-                });
+                // Check if user already exists
+                const { data: existingUser, error: checkError } = await supabase
+                    .from('users')
+                    .select('*')
+                    .eq('mobile_number', mobileNumber)
+                    .single();
                 
-                if (error) {
-                    showNotification('रजिस्ट्रेशन में त्रुटि: ' + error.message);
+                if (existingUser) {
+                    // User exists, check password
+                    if (existingUser.password !== password) {
+                        showNotification('गलत पासवर्ड! कृपया दोबारा प्रयास करें');
+                        return;
+                    }
+                    
+                    // Login successful
+                    showNotification('लॉगिन सफल!');
+                    document.getElementById('registrationPopup').classList.remove('active');
+                    
+                    // Set current user
+                    currentUser = existingUser;
+                    userProgress = existingUser;
+                    shareCount = existingUser.share_count;
+                    
+                    updateProgress();
                     return;
                 }
                 
-                // Create user progress record
-                const { error: progressError } = await supabase
-                    .from('user_progress')
+                // Register new user without OTP
+                const { data, error } = await supabase
+                    .from('users')
                     .insert([{ 
-                        id: data.user.id, 
-                        mobile_phone: mobileNumber,
+                        mobile_number: mobileNumber,
+                        password: password,
                         share_count: 0,
-                        has_seen_rules: false
-                    }]);
+                        has_seen_rules: false,
+                        created_at: new Date().toISOString()
+                    }])
+                    .select();
 
-                if (progressError) {
-                    console.error('Error creating user progress:', progressError.message);
+                if (error) {
+                    showNotification('रजिस्ट्रेशन में त्रुटि: ' + error.message);
+                    return;
                 }
                 
                 showNotification('रजिस्ट्रेशन सफल! अब आप शेयर कर सकते हैं');
@@ -1755,13 +1764,8 @@
                 document.getElementById('registrationPopup').classList.remove('active');
                 
                 // Set current user
-                currentUser = data.user;
-                userProgress = {
-                    id: data.user.id,
-                    mobile_phone: mobileNumber,
-                    share_count: 0,
-                    has_seen_rules: false
-                };
+                currentUser = data[0];
+                userProgress = data[0];
                 shareCount = 0;
                 
                 updateProgress();
@@ -1783,44 +1787,9 @@
             });
             
             // Popup Login link
-            document.getElementById('popupLoginLink').addEventListener('click', async function(e) {
+            document.getElementById('popupLoginLink').addEventListener('click', function(e) {
                 e.preventDefault();
-                const mobileNumber = prompt('अपना मोबाइल नंबर दर्ज करें:');
-                const password = prompt('अपना पासवर्ड दर्ज करें:');
-                
-                if (!mobileNumber || !password) {
-                    showNotification('कृपया मोबाइल नंबर और पासवर्ड दर्ज करें');
-                    return;
-                }
-                
-                const { data, error } = await supabase.auth.signInWithPassword({
-                    phone: `+91${mobileNumber}`,
-                    password: password,
-                });
-                
-                if (error) {
-                    showNotification('लॉगिन में त्रुटि: ' + error.message);
-                    return;
-                }
-                
-                // Get user progress
-                const { data: progress, error: progressError } = await supabase
-                    .from('user_progress')
-                    .select('*')
-                    .eq('id', data.user.id)
-                    .single();
-                
-                if (progressError) {
-                    console.error('Error fetching user progress:', progressError.message);
-                }
-                
-                showNotification('लॉगिन सफल!');
-                document.getElementById('registrationPopup').classList.remove('active');
-                currentUser = data.user;
-                userProgress = progress;
-                shareCount = progress.share_count;
-                
-                updateProgress();
+                document.getElementById('registrationPopup').classList.add('active');
             });
             
             // Countdown Timer
@@ -1882,23 +1851,17 @@
             
             // Check authentication state
             async function checkAuthState() {
-                const { data, error } = await supabase.auth.getUser();
-                
-                if (data.user) {
-                    // User is logged in
-                    currentUser = data.user;
-                    
-                    // Get user progress
-                    const { data: progress, error: progressError } = await supabase
-                        .from('user_progress')
-                        .select('*')
-                        .eq('id', data.user.id)
-                        .single();
-                    
-                    if (!progressError && progress) {
-                        userProgress = progress;
-                        shareCount = progress.share_count;
+                // Check if user is stored in localStorage
+                const storedUser = localStorage.getItem('currentUser');
+                if (storedUser) {
+                    try {
+                        const user = JSON.parse(storedUser);
+                        currentUser = user;
+                        userProgress = user;
+                        shareCount = user.share_count;
                         updateProgress();
+                    } catch (e) {
+                        console.error('Error parsing stored user:', e);
                     }
                 }
             }
@@ -1908,15 +1871,19 @@
                 if (!currentUser) return;
                 
                 const { error } = await supabase
-                    .from('user_progress')
+                    .from('users')
                     .update({ 
                         share_count: shareCount,
                         updated_at: new Date().toISOString()
                     })
-                    .eq('id', currentUser.id);
+                    .eq('mobile_number', currentUser.mobile_number);
                 
                 if (error) {
                     console.error('Error updating user progress:', error);
+                } else {
+                    // Update local storage
+                    currentUser.share_count = shareCount;
+                    localStorage.setItem('currentUser', JSON.stringify(currentUser));
                 }
             }
             
