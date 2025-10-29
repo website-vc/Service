@@ -24,6 +24,36 @@
             padding: 20px;
         }
 
+        /* Language Toggle */
+        .language-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 8px 15px;
+            display: flex;
+            gap: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.active {
+            background: linear-gradient(135deg, #e84393, #fd79a8);
+            color: white;
+        }
+
         /* Entry Animation Styles */
         .entry-animation {
             position: fixed;
@@ -144,6 +174,181 @@
             display: flex;
             align-items: center;
             gap: 5px;
+        }
+
+        /* Video Call Interface Styles */
+        .video-call-interface {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            z-index: 1500;
+            display: none;
+            flex-direction: column;
+            color: white;
+        }
+
+        .video-call-interface.active {
+            display: flex;
+        }
+
+        .caller-info {
+            padding: 20px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .caller-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 10px;
+            overflow: hidden;
+            border: 3px solid #e84393;
+            background: #f8f9fa;
+        }
+
+        .caller-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .caller-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .call-status {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        .video-container {
+            flex: 1;
+            display: flex;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .remote-video {
+            flex: 1;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .remote-video-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background: #000;
+        }
+
+        .remote-video-placeholder i {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            color: #e84393;
+        }
+
+        .local-video {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 120px;
+            height: 160px;
+            background: #000;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid #e84393;
+        }
+
+        .local-video-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #333;
+        }
+
+        .call-controls {
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .call-btn {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .accept-btn {
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            color: white;
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+        }
+
+        .decline-btn {
+            background: linear-gradient(135deg, #f44336, #c62828);
+            color: white;
+            box-shadow: 0 5px 15px rgba(244, 67, 54, 0.4);
+        }
+
+        .call-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .call-timer {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 1rem;
+        }
+
+        /* Ringing Animation */
+        .ringing-animation {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 5px solid rgba(232, 67, 147, 0.5);
+            animation: ringPulse 1.5s infinite;
+            z-index: 1;
+        }
+
+        .ringing-animation:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .ringing-animation:nth-child(3) {
+            animation-delay: 1s;
         }
 
         /* Registration Popup Styles */
@@ -974,6 +1179,129 @@
             background: linear-gradient(135deg, #25D366, #128C7E);
         }
 
+        /* Reviews Section Styles */
+        .reviews-section {
+            padding: 30px 20px;
+            background: linear-gradient(135deg, #f3e5f5, #e1bee7);
+            text-align: center;
+        }
+
+        .reviews-title {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: #333;
+            position: relative;
+            display: inline-block;
+        }
+
+        .reviews-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: #e84393;
+            border-radius: 3px;
+        }
+
+        .reviews-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .review {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .review.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .review-content {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .review-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .review-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .review-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .review-info {
+            text-align: left;
+        }
+
+        .review-name {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 3px;
+        }
+
+        .review-location {
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        .review-rating {
+            color: #ffd700;
+            margin-top: 5px;
+        }
+
+        .reviews-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ccc;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background: #e84393;
+            transform: scale(1.2);
+        }
+
         /* Advanced Animations */
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% {
@@ -1055,6 +1383,17 @@
             }
         }
 
+        @keyframes ringPulse {
+            0% {
+                transform: translate(-50%, -50%) scale(0.8);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(2);
+                opacity: 0;
+            }
+        }
+
         .pulse {
             animation: pulse 2s infinite;
         }
@@ -1110,18 +1449,110 @@
                 padding: 10px;
                 font-size: 0.9rem;
             }
+            
+            .caller-avatar {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .caller-name {
+                font-size: 1.3rem;
+            }
+            
+            .call-btn {
+                width: 60px;
+                height: 60px;
+                font-size: 1.3rem;
+            }
+            
+            .local-video {
+                width: 100px;
+                height: 133px;
+            }
+            
+            .review-content {
+                font-size: 1rem;
+            }
+            
+            .language-toggle {
+                top: 10px;
+                right: 10px;
+                padding: 6px 12px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Audio Elements for Ringtone and Call Sounds -->
+    <audio id="ringtone" loop preload="auto">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-phone-ringing-2945.mp3" type="audio/mpeg">
+    </audio>
+    
+    <audio id="callConnected" preload="auto">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-confirmation-tone-2867.mp3" type="audio/mpeg">
+    </audio>
+    
+    <audio id="callEnded" preload="auto">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Language Toggle -->
+    <div class="language-toggle">
+        <button class="lang-btn active" id="hindiBtn">हिंदी</button>
+        <button class="lang-btn" id="englishBtn">English</button>
+    </div>
+
     <!-- Entry Animation -->
     <div class="entry-animation" id="entryAnimation">
         <div class="entry-content">
             <div class="entry-icon">
                 <i class="fas fa-video"></i>
             </div>
-            <h1 class="entry-title">Premium Indian Girls</h1>
-            <p class="entry-subtitle">वीडियो कॉल सर्विस</p>
+            <h1 class="entry-title" data-hi="Premium Indian Girls" data-en="Premium Indian Girls">Premium Indian Girls</h1>
+            <p class="entry-subtitle" data-hi="वीडियो कॉल सर्विस" data-en="Video Call Service">वीडियो कॉल सर्विस</p>
+        </div>
+    </div>
+
+    <!-- Video Call Interface -->
+    <div class="video-call-interface" id="videoCallInterface">
+        <div class="ringing-animation"></div>
+        <div class="ringing-animation"></div>
+        <div class="ringing-animation"></div>
+        
+        <div class="caller-info">
+            <div class="caller-avatar">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face" alt="Caller">
+            </div>
+            <div class="caller-name">प्रिया / Priya</div>
+            <div class="call-status" id="callStatus" data-hi="वीडियो कॉल आ रही है..." data-en="Incoming Video Call...">वीडियो कॉल आ रही है...</div>
+        </div>
+        
+        <div class="video-container">
+            <div class="remote-video">
+                <div class="remote-video-placeholder">
+                    <i class="fas fa-user-circle"></i>
+                    <p data-hi="कनेक्ट हो रहा है..." data-en="Connecting...">कनेक्ट हो रहा है...</p>
+                </div>
+            </div>
+            
+            <div class="local-video">
+                <div class="local-video-placeholder">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+            
+            <div class="call-timer" id="callTimer" style="display: none;">
+                <i class="fas fa-clock"></i> <span id="timerDisplay">00:00</span>
+            </div>
+        </div>
+        
+        <div class="call-controls">
+            <button class="call-btn accept-btn" id="acceptCallBtn">
+                <i class="fas fa-phone"></i>
+            </button>
+            <button class="call-btn decline-btn" id="declineCallBtn">
+                <i class="fas fa-phone-slash"></i>
+            </button>
         </div>
     </div>
 
@@ -1129,100 +1560,102 @@
     <div class="live-stats">
         <div class="stat-item">
             <i class="fas fa-eye"></i>
-            <span id="liveViewers">245</span> Online
+            <span id="liveViewers">245</span> <span data-hi="Online" data-en="Online">Online</span>
         </div>
         <div class="stat-item">
             <i class="fas fa-users"></i>
-            <span id="totalUsers">1.2K</span> Users
+            <span id="totalUsers">1.2K</span> <span data-hi="Users" data-en="Users">Users</span>
         </div>
     </div>
 
     <div class="trust-badge">
         <i class="fas fa-shield-alt"></i>
-        <span>100% सुरक्षित और प्राइवेट</span>
+        <span data-hi="100% सुरक्षित और प्राइवेट" data-en="100% Safe and Private">100% सुरक्षित और प्राइवेट</span>
     </div>
 
     <div class="notification" id="notification">
-        <i class="fas fa-check-circle"></i> <span id="notificationText">शेयर सफल! प्रगति बढ़ी</span>
+        <i class="fas fa-check-circle"></i> <span id="notificationText" data-hi="शेयर सफल! प्रगति बढ़ी" data-en="Share successful! Progress increased">शेयर सफल! प्रगति बढ़ी</span>
     </div>
 
     <div class="container">
         <div class="header">
             <div class="floating-hearts" id="floatingHearts"></div>
-            <h1>Premium Indian Girls</h1>
-            <p>वीडियो कॉल सर्विस</p>
+            <h1 data-hi="Premium Indian Girls" data-en="Premium Indian Girls">Premium Indian Girls</h1>
+            <p data-hi="वीडियो कॉल सर्विस" data-en="Video Call Service">वीडियो कॉल सर्विस</p>
             <div class="security-features">
                 <div class="security-badge">
-                    <i class="fas fa-lock"></i> प्राइवेट
+                    <i class="fas fa-lock"></i> <span data-hi="प्राइवेट" data-en="Private">प्राइवेट</span>
                 </div>
                 <div class="security-badge">
-                    <i class="fas fa-video"></i> लाइव वीडियो कॉल
+                    <i class="fas fa-video"></i> <span data-hi="लाइव वीडियो कॉल" data-en="Live Video Call">लाइव वीडियो कॉल</span>
                 </div>
                 <div class="security-badge">
-                    <i class="fas fa-users"></i> 1000+ संतुष्ट यूजर्स
+                    <i class="fas fa-users"></i> <span data-hi="1000+ संतुष्ट यूजर्स" data-en="1000+ Satisfied Users">1000+ संतुष्ट यूजर्स</span>
                 </div>
             </div>
         </div>
 
         <!-- Countdown Timer -->
         <div class="countdown-timer" id="countdownTimer">
-            <h3>ऑफर समाप्त हो रहा है:</h3>
+            <h3 data-hi="ऑफर समाप्त हो रहा है:" data-en="Offer Ending In:">ऑफर समाप्त हो रहा है:</h3>
             <div class="timer-display">
                 <span id="timerHours">02</span>:<span id="timerMinutes">30</span>:<span id="timerSeconds">00</span>
             </div>
         </div>
 
         <div class="premium-section">
-            <h2 class="premium-title">फ्री वीडियो कॉल का ऑफर!</h2>
-            <div class="premium-offer">मुफ्त वीडियो कॉल</div>
-            <p>10 WhatsApp ग्रुप में शेयर करें और फ्री वीडियो कॉल पाएं</p>
+            <h2 class="premium-title" data-hi="फ्री वीडियो कॉल का ऑफर!" data-en="Free Video Call Offer!">फ्री वीडियो कॉल का ऑफर!</h2>
+            <div class="premium-offer" data-hi="मुफ्त वीडियो कॉल" data-en="Free Video Call">मुफ्त वीडियो कॉल</div>
+            <p data-hi="10 WhatsApp ग्रुप में शेयर करें और फ्री वीडियो कॉल पाएं" data-en="Share in 10 WhatsApp groups and get free video call">10 WhatsApp ग्रुप में शेयर करें और फ्री वीडियो कॉल पाएं</p>
             <button class="video-call-btn" id="videoCallBtn">
-                <i class="fas fa-video"></i> App डाउनलोड करें
+                <i class="fas fa-video"></i> <span data-hi="App डाउनलोड करें" data-en="Download App">App डाउनलोड करें</span>
             </button>
-            <p id="videoCallMessage" style="color: #666; margin-top: 10px;">
+            <p id="videoCallMessage" style="color: #666; margin-top: 10px;" data-hi="10 शेयर पूरे करने पर App डाउनलोड एक्टिव होगा" data-en="App download will be activated after completing 10 shares">
                 10 शेयर पूरे करने पर App डाउनलोड एक्टिव होगा
             </p>
         </div>
 
         <div class="progress-section">
-            <h2 class="progress-title">आपकी प्रगति</h2>
+            <h2 class="progress-title" data-hi="आपकी प्रगति" data-en="Your Progress">आपकी प्रगति</h2>
             <div class="progress-container">
                 <div class="progress-bar" id="progressBar"></div>
             </div>
-            <div class="progress-text" id="progressText">0/10 शेयर पूरे</div>
+            <div class="progress-text" id="progressText" data-hi="0/10 शेयर पूरे" data-en="0/10 Shares Completed">0/10 शेयर पूरे</div>
             <div class="progress-milestones" id="progressMilestones">
                 <!-- Milestones will be added dynamically -->
             </div>
         </div>
 
         <div class="girls-showcase">
-            <h2 class="showcase-title">हमारी प्रीमियम गर्ल्स (50+)</h2>
+            <h2 class="showcase-title" data-hi="हमारी प्रीमियम गर्ल्स (50+)" data-en="Our Premium Girls (50+)">हमारी प्रीमियम गर्ल्स (50+)</h2>
             <div class="girls-grid" id="girlsGrid">
                 <!-- Girls will be dynamically added here -->
             </div>
-            <p style="color: #666; margin-top: 10px;">50+ प्रीमियम इंडियन गर्ल्स आपका इंतज़ार कर रही हैं</p>
+            <p style="color: #666; margin-top: 10px;" data-hi="50+ प्रीमियम इंडियन गर्ल्स आपका इंतज़ार कर रही हैं" data-en="50+ Premium Indian Girls are waiting for you">
+                50+ प्रीमियम इंडियन गर्ल्स आपका इंतज़ार कर रही हैं
+            </p>
             
             <!-- Chat Preview -->
             <div class="chat-preview">
-                <h4 style="margin-bottom: 10px;">लाइव चैट प्रीव्यू:</h4>
+                <h4 style="margin-bottom: 10px;" data-hi="लाइव चैट प्रीव्यू:" data-en="Live Chat Preview:">लाइव चैट प्रीव्यू:</h4>
                 <div class="chat-message">
-                    <strong>प्रिया:</strong> हाय! आप कैसे हो? 😊
+                    <strong data-hi="प्रिया:" data-en="Priya:">प्रिया:</strong> <span data-hi="हाय! आप कैसे हो? 😊" data-en="Hi! How are you? 😊">हाय! आप कैसे हो? 😊</span>
                 </div>
                 <div class="chat-message">
-                    <strong>सोनम:</strong> क्या आप वीडियो कॉल के लिए तैयार हैं? 📹
+                    <strong data-hi="सोनम:" data-en="Sonam:">सोनम:</strong> <span data-hi="क्या आप वीडियो कॉल के लिए तैयार हैं? 📹" data-en="Are you ready for video call? 📹">क्या आप वीडियो कॉल के लिए तैयार हैं? 📹</span>
                 </div>
             </div>
         </div>
 
         <!-- Voice Message Section -->
         <div class="voice-message">
-            <h3>वॉइस मैसेज सुने!</h3>
-            <p>हमारी गर्ल्स की आवाज सुनकर आकर्षित हो जाएं</p>
+            <h3 data-hi="वॉइस मैसेज सुने!" data-en="Listen to Voice Messages!">वॉइस मैसेज सुने!</h3>
+            <p data-hi="हमारी गर्ल्स की आवाज सुनकर आकर्षित हो जाएं" data-en="Get attracted by listening to our girls' voices">हमारी गर्ल्स की आवाज सुनकर आकर्षित हो जाएं</p>
             <button class="voice-btn" id="playVoiceBtn">
-                <i class="fas fa-play"></i> वॉइस सुनें
+                <i class="fas fa-play"></i> <span data-hi="वॉइस सुनें" data-en="Play Voice">वॉइस सुनें</span>
             </button>
             <button class="voice-btn" id="shareVoiceBtn">
-                <i class="fas fa-share"></i> शेयर करें
+                <i class="fas fa-share"></i> <span data-hi="शेयर करें" data-en="Share">शेयर करें</span>
             </button>
         </div>
 
@@ -1230,60 +1663,71 @@
         <div class="trust-indicators">
             <div class="trust-indicator">
                 <i class="fas fa-shield-alt" style="font-size: 2rem; color: #e84393; margin-bottom: 10px;"></i>
-                <div style="font-weight: bold; color: #333;">SSL सिक्योर्ड</div>
+                <div style="font-weight: bold; color: #333;" data-hi="SSL सिक्योर्ड" data-en="SSL Secured">SSL सिक्योर्ड</div>
             </div>
             <div class="trust-indicator">
                 <i class="fas fa-user-lock" style="font-size: 2rem; color: #e84393; margin-bottom: 10px;"></i>
-                <div style="font-weight: bold; color: #333;">डेटा प्रोटेक्टेड</div>
+                <div style="font-weight: bold; color: #333;" data-hi="डेटा प्रोटेक्टेड" data-en="Data Protected">डेटा प्रोटेक्टेड</div>
             </div>
             <div class="trust-indicator">
                 <i class="fas fa-clock" style="font-size: 2rem; color: #e84393; margin-bottom: 10px;"></i>
-                <div style="font-weight: bold; color: #333;">24/7 सपोर्ट</div>
+                <div style="font-weight: bold; color: #333;" data-hi="24/7 सपोर्ट" data-en="24/7 Support">24/7 सपोर्ट</div>
             </div>
             <div class="trust-indicator">
                 <i class="fas fa-check-circle" style="font-size: 2rem; color: #e84393; margin-bottom: 10px;"></i>
-                <div style="font-weight: bold; color: #333;">वेरिफाइड प्रोफाइल</div>
+                <div style="font-weight: bold; color: #333;" data-hi="वेरिफाइड प्रोफाइल" data-en="Verified Profile">वेरिफाइड प्रोफाइल</div>
             </div>
         </div>
 
         <div class="features-section">
-            <h2 class="features-title">विशेष सुविधाएं</h2>
+            <h2 class="features-title" data-hi="विशेष सुविधाएं" data-en="Special Features">विशेष सुविधाएं</h2>
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-video"></i>
                     </div>
-                    <div class="feature-text">HD वीडियो कॉल</div>
+                    <div class="feature-text" data-hi="HD वीडियो कॉल" data-en="HD Video Call">HD वीडियो कॉल</div>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-clock"></i>
                     </div>
-                    <div class="feature-text">24/7 उपलब्ध</div>
+                    <div class="feature-text" data-hi="24/7 उपलब्ध" data-en="24/7 Available">24/7 उपलब्ध</div>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-shield-alt"></i>
                     </div>
-                    <div class="feature-text">100% प्राइवेट</div>
+                    <div class="feature-text" data-hi="100% प्राइवेट" data-en="100% Private">100% प्राइवेट</div>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-heart"></i>
                     </div>
-                    <div class="feature-text">रियल गर्ल्स</div>
+                    <div class="feature-text" data-hi="रियल गर्ल्स" data-en="Real Girls">रियल गर्ल्स</div>
                 </div>
+            </div>
+        </div>
+
+        <!-- Reviews Section -->
+        <div class="reviews-section">
+            <h2 class="reviews-title" data-hi="यूजर्स की समीक्षाएं" data-en="User Reviews">यूजर्स की समीक्षाएं</h2>
+            <div class="reviews-container" id="reviewsContainer">
+                <!-- Reviews will be added dynamically -->
+            </div>
+            <div class="reviews-indicators" id="reviewsIndicators">
+                <!-- Indicators will be added dynamically -->
             </div>
         </div>
 
         <div class="action-section">
             <button class="whatsapp-btn" id="whatsappBtn">
-                <i class="fab fa-whatsapp"></i> WhatsApp पर शेयर करें
+                <i class="fab fa-whatsapp"></i> <span data-hi="WhatsApp पर शेयर करें" data-en="Share on WhatsApp">WhatsApp पर शेयर करें</span>
             </button>
-            <div class="share-count" id="shareCount">आपने 0 बार शेयर किया है</div>
+            <div class="share-count" id="shareCount" data-hi="आपने 0 बार शेयर किया है" data-en="You have shared 0 times">आपने 0 बार शेयर किया है</div>
             
             <div class="share-options" id="shareOptions">
-                <h3>अन्य ऐप्स पर शेयर करें:</h3>
+                <h3 data-hi="अन्य ऐप्स पर शेयर करें:" data-en="Share on other apps:">अन्य ऐप्स पर शेयर करें:</h3>
                 <div class="share-buttons">
                     <button class="share-button whatsapp-share" id="whatsappDirect">
                         <i class="fab fa-whatsapp"></i> WhatsApp
@@ -1299,13 +1743,13 @@
         </div>
 
         <div class="rules-section">
-            <h3 class="rules-title">नियम और शर्तें</h3>
+            <h3 class="rules-title" data-hi="नियम और शर्तें" data-en="Rules and Conditions">नियम और शर्तें</h3>
             <ul class="rules-list">
-                <li>आपकी उम्र 18 वर्ष या उससे अधिक होनी चाहिए</li>
-                <li>सेवा का उपयोग केवल व्यक्तिगत उद्देश्यों के लिए किया जा सकता है</li>
-                <li>अश्लील या अनुचित व्यवहार की अनुमति नहीं है</li>
-                <li>सभी कॉल रिकॉर्ड की जा सकती हैं और गुणवत्ता नियंत्रण के लिए उपयोग की जा सकती हैं</li>
-                <li>उल्लंघन होने पर सेवा बिना किसी सूचना के रोकी जा सकती है</li>
+                <li data-hi="आपकी उम्र 18 वर्ष या उससे अधिक होनी चाहिए" data-en="You must be 18 years or older">आपकी उम्र 18 वर्ष या उससे अधिक होनी चाहिए</li>
+                <li data-hi="सेवा का उपयोग केवल व्यक्तिगत उद्देश्यों के लिए किया जा सकता है" data-en="Service can only be used for personal purposes">सेवा का उपयोग केवल व्यक्तिगत उद्देश्यों के लिए किया जा सकता है</li>
+                <li data-hi="अश्लील या अनुचित व्यवहार की अनुमति नहीं है" data-en="Obscene or inappropriate behavior is not allowed">अश्लील या अनुचित व्यवहार की अनुमति नहीं है</li>
+                <li data-hi="सभी कॉल रिकॉर्ड की जा सकती हैं और गुणवत्ता नियंत्रण के लिए उपयोग की जा सकती हैं" data-en="All calls may be recorded and used for quality control">सभी कॉल रिकॉर्ड की जा सकती हैं और गुणवत्ता नियंत्रण के लिए उपयोग की जा सकती हैं</li>
+                <li data-hi="उल्लंघन होने पर सेवा बिना किसी सूचना के रोकी जा सकती है" data-en="Service may be terminated without notice in case of violation">उल्लंघन होने पर सेवा बिना किसी सूचना के रोकी जा सकती है</li>
             </ul>
         </div>
     </div>
@@ -1326,30 +1770,28 @@
             <div class="registration-popup-icon">
                 <i class="fas fa-user-plus"></i>
             </div>
-            <h2 class="registration-popup-title">रजिस्टर करें</h2>
-            <p class="registration-popup-message">प्रोफाइल देखने और वीडियो कॉल पाने के लिए रजिस्टर करें</p>
+            <h2 class="registration-popup-title" data-hi="रजिस्टर करें" data-en="Register">रजिस्टर करें</h2>
+            <p class="registration-popup-message" data-hi="प्रोफाइल देखने और वीडियो कॉल पाने के लिए रजिस्टर करें" data-en="Register to view profiles and get video calls">प्रोफाइल देखने और वीडियो कॉल पाने के लिए रजिस्टर करें</p>
             
             <form class="registration-popup-form" id="registrationPopupForm">
                 <div class="form-group">
-                    <label for="popupMobileNumber">मोबाइल नंबर</label>
-                    <input type="tel" id="popupMobileNumber" placeholder="10 अंकों का मोबाइल नंबर" required pattern="[0-9]{10}">
+                    <label for="popupMobileNumber" data-hi="मोबाइल नंबर" data-en="Mobile Number">मोबाइल नंबर</label>
+                    <input type="tel" id="popupMobileNumber" data-hi-placeholder="10 अंकों का मोबाइल नंबर" data-en-placeholder="10 digit mobile number" placeholder="10 अंकों का मोबाइल नंबर" required pattern="[0-9]{10}">
                 </div>
                 <div class="form-group">
-                    <label for="popupPassword">पासवर्ड</label>
-                    <input type="password" id="popupPassword" placeholder="कम से कम 6 अक्षर" required minlength="6">
+                    <label for="popupPassword" data-hi="पासवर्ड" data-en="Password">पासवर्ड</label>
+                    <input type="password" id="popupPassword" data-hi-placeholder="कम से कम 6 अक्षर" data-en-placeholder="At least 6 characters" placeholder="कम से कम 6 अक्षर" required minlength="6">
                 </div>
             </form>
             
             <div>
                 <button class="registration-popup-btn register" id="registrationPopupRegisterBtn">
-                    <i class="fas fa-user-plus"></i> रजिस्टर करें
+                    <i class="fas fa-user-plus"></i> <span data-hi="रजिस्टर करें" data-en="Register">रजिस्टर करें</span>
                 </button>
-                <button class="registration-popup-btn" id="closeRegistrationPopupBtn">
-                    बाद में
-                </button>
+                <button class="registration-popup-btn" id="closeRegistrationPopupBtn" data-hi="बाद में" data-en="Later">बाद में</button>
             </div>
             
-            <p class="login-link">पहले से रजिस्टर हैं? <a href="#" id="popupLoginLink">लॉग इन करें</a></p>
+            <p class="login-link" data-hi="पहले से रजिस्टर हैं?" data-en="Already registered?">पहले से रजिस्टर हैं? <a href="#" id="popupLoginLink" data-hi="लॉग इन करें" data-en="Login">लॉग इन करें</a></p>
         </div>
     </div>
 
@@ -1359,27 +1801,25 @@
             <div class="rules-popup-icon">
                 <i class="fas fa-exclamation-triangle"></i>
             </div>
-            <h2 class="rules-popup-title">पहले शेयर करें!</h2>
-            <p class="rules-popup-message">App डाउनलोड करने के लिए आपको पहले 10 WhatsApp ग्रुप में शेयर करना होगा।</p>
+            <h2 class="rules-popup-title" data-hi="पहले शेयर करें!" data-en="Share First!">पहले शेयर करें!</h2>
+            <p class="rules-popup-message" data-hi="App डाउनलोड करने के लिए आपको पहले 10 WhatsApp ग्रुप में शेयर करना होगा।" data-en="To download the app, you need to share in 10 WhatsApp groups first.">App डाउनलोड करने के लिए आपको पहले 10 WhatsApp ग्रुप में शेयर करना होगा।</p>
             
             <div class="rules-popup-list">
-                <h3 style="margin-bottom: 15px; color: #333;">नियम और शर्तें:</h3>
+                <h3 style="margin-bottom: 15px; color: #333;" data-hi="नियम और शर्तें:" data-en="Rules and Conditions:">नियम और शर्तें:</h3>
                 <ul style="list-style-type: none; padding: 0;">
-                    <li>आपकी उम्र 18 वर्ष या उससे अधिक होनी चाहिए</li>
-                    <li>सेवा का उपयोग केवल व्यक्तिगत उद्देश्यों के लिए किया जा सकता है</li>
-                    <li>अश्लील या अनुचित व्यवहार की अनुमति नहीं है</li>
-                    <li>सभी कॉल रिकॉर्ड की जा सकती हैं और गुणवत्ता नियंत्रण के लिए उपयोग की जा सकती हैं</li>
-                    <li>उल्लंघन होने पर सेवा बिना किसी सूचना के रोकी जा सकती है</li>
+                    <li data-hi="आपकी उम्र 18 वर्ष या उससे अधिक होनी चाहिए" data-en="You must be 18 years or older">आपकी उम्र 18 वर्ष या उससे अधिक होनी चाहिए</li>
+                    <li data-hi="सेवा का उपयोग केवल व्यक्तिगत उद्देश्यों के लिए किया जा सकता है" data-en="Service can only be used for personal purposes">सेवा का उपयोग केवल व्यक्तिगत उद्देश्यों के लिए किया जा सकता है</li>
+                    <li data-hi="अश्लील या अनुचित व्यवहार की अनुमति नहीं है" data-en="Obscene or inappropriate behavior is not allowed">अश्लील या अनुचित व्यवहार की अनुमति नहीं है</li>
+                    <li data-hi="सभी कॉल रिकॉर्ड की जा सकती हैं और गुणवत्ता नियंत्रण के लिए उपयोग की जा सकती हैं" data-en="All calls may be recorded and used for quality control">सभी कॉल रिकॉर्ड की जा सकती हैं और गुणवत्ता नियंत्रण के लिए उपयोग की जा सकती हैं</li>
+                    <li data-hi="उल्लंघन होने पर सेवा बिना किसी सूचना के रोकी जा सकती है" data-en="Service may be terminated without notice in case of violation">उल्लंघन होने पर सेवा बिना किसी सूचना के रोकी जा सकती है</li>
                 </ul>
             </div>
             
             <div>
                 <button class="rules-popup-btn share" id="rulesPopupShareBtn">
-                    <i class="fab fa-whatsapp"></i> अभी शेयर करें
+                    <i class="fab fa-whatsapp"></i> <span data-hi="अभी शेयर करें" data-en="Share Now">अभी शेयर करें</span>
                 </button>
-                <button class="rules-popup-btn" id="closeRulesPopupBtn">
-                    बाद में
-                </button>
+                <button class="rules-popup-btn" id="closeRulesPopupBtn" data-hi="बाद में" data-en="Later">बाद में</button>
             </div>
         </div>
     </div>
@@ -1389,13 +1829,67 @@
             <div class="trophy">
                 <i class="fas fa-trophy"></i>
             </div>
-            <h2 class="win-title">बधाई हो!</h2>
-            <p class="win-message">आपने 10 शेयर पूरे कर लिए हैं। अब आप App डाउनलोड कर सकते हैं!</p>
-            <button class="close-btn" id="closeWinBtn">App डाउनलोड करें</button>
+            <h2 class="win-title" data-hi="बधाई हो!" data-en="Congratulations!">बधाई हो!</h2>
+            <p class="win-message" data-hi="आपने 10 शेयर पूरे कर लिए हैं। अब आप App डाउनलोड कर सकते हैं!" data-en="You have completed 10 shares. Now you can download the App!">आपने 10 शेयर पूरे कर लिए हैं। अब आप App डाउनलोड कर सकते हैं!</p>
+            <button class="close-btn" id="closeWinBtn" data-hi="App डाउनलोड करें" data-en="Download App">App डाउनलोड करें</button>
         </div>
     </div>
 
     <script>
+        // Language Management
+        let currentLanguage = 'hi'; // Default language is Hindi
+        
+        // Function to change language
+        function changeLanguage(lang) {
+            currentLanguage = lang;
+            
+            // Update language buttons
+            document.getElementById('hindiBtn').classList.toggle('active', lang === 'hi');
+            document.getElementById('englishBtn').classList.toggle('active', lang === 'en');
+            
+            // Update all elements with data attributes
+            document.querySelectorAll('[data-hi]').forEach(element => {
+                if (element.hasAttribute(`data-${lang}`)) {
+                    const text = element.getAttribute(`data-${lang}`);
+                    if (element.tagName === 'INPUT' && element.hasAttribute(`data-${lang}-placeholder`)) {
+                        element.placeholder = element.getAttribute(`data-${lang}-placeholder`);
+                    } else {
+                        element.textContent = text;
+                    }
+                }
+            });
+            
+            // Update share message based on language
+            updateShareMessage();
+            
+            // Save language preference
+            localStorage.setItem('preferredLanguage', lang);
+        }
+        
+        // Update share message based on language
+        function updateShareMessage() {
+            if (currentLanguage === 'hi') {
+                shareMessage = "🔥 *Premium Indian Girls Video Call Service* 🔥\n\nमैंने इस प्रीमियम सर्विस का इस्तेमाल किया है! आप भी फ्री वीडियो कॉल पाने के लिए शेयर करें!\n\nयहां क्लिक करें और अभी शुरू करें:\nhttps://video-call-service-w21f.vercel.app/\n\n*50+ प्रीमियम इंडियन गर्ल्स आपका इंतज़ार कर रही हैं!* 💖";
+            } else {
+                shareMessage = "🔥 *Premium Indian Girls Video Call Service* 🔥\n\nI've used this premium service! You too can get free video calls by sharing!\n\nClick here and start now:\nhttps://video-call-service-w21f.vercel.app/\n\n*50+ Premium Indian Girls are waiting for you!* 💖";
+            }
+        }
+        
+        // Initialize language on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check for saved language preference
+            const savedLanguage = localStorage.getItem('preferredLanguage');
+            if (savedLanguage) {
+                changeLanguage(savedLanguage);
+            }
+            
+            // Set up language toggle buttons
+            document.getElementById('hindiBtn').addEventListener('click', () => changeLanguage('hi'));
+            document.getElementById('englishBtn').addEventListener('click', () => changeLanguage('en'));
+            
+            // Rest of your existing JavaScript code...
+        });
+
         // Supabase Configuration
         const SUPABASE_URL = 'https://vjsovrmmnpuwjtuczwig.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZqc292cm1tbnB1d2p0dWN6d2lnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjE3MjQxNDEsImV4cCI6MjA3NzMwMDE0MX0.HMLd6iliqp2mmfuZ5meLA9KXMCKLJ6l0HXvIMZkwmXk';
@@ -1410,10 +1904,22 @@
         let currentUser = null;
         let userProgress = null;
         let shareCount = 0;
+        let shareMessage = "🔥 *Premium Indian Girls Video Call Service* 🔥\n\nमैंने इस प्रीमियम सर्विस का इस्तेमाल किया है! आप भी फ्री वीडियो कॉल पाने के लिए शेयर करें!\n\nयहां क्लिक करें और अभी शुरू करें:\nhttps://video-call-service-w21f.vercel.app/\n\n*50+ प्रीमियम इंडियन गर्ल्स आपका इंतज़ार कर रही हैं!* 💖";
+        let ringtone, callConnectedSound, callEndedSound;
 
         // Entry animation
         document.addEventListener('DOMContentLoaded', function() {
             const entryAnimation = document.getElementById('entryAnimation');
+            
+            // Initialize sounds
+            ringtone = document.getElementById('ringtone');
+            callConnectedSound = document.getElementById('callConnected');
+            callEndedSound = document.getElementById('callEnded');
+            
+            // Set volume for sounds
+            ringtone.volume = 0.5;
+            callConnectedSound.volume = 0.7;
+            callEndedSound.volume = 0.7;
             
             // Show the entry animation for 2.5 seconds
             setTimeout(function() {
@@ -1422,6 +1928,11 @@
                 // Remove from DOM after animation completes
                 setTimeout(function() {
                     entryAnimation.style.display = 'none';
+                    // Show video call interface after entry animation
+                    document.getElementById('videoCallInterface').classList.add('active');
+                    
+                    // Start ringing sound
+                    startRinging();
                 }, 500);
             }, 2500);
             
@@ -1439,16 +1950,16 @@
             // Initialize girls grid with 50+ profiles
             const girlsGrid = document.getElementById('girlsGrid');
             const girls = [
-                { name: 'प्रिया', age: 22, location: 'मुंबई', online: true, rating: 4.8, image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face' },
-                { name: 'सोनम', age: 24, location: 'दिल्ली', online: false, rating: 4.9, image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&h=150&fit=crop&crop=face' },
-                { name: 'नीतू', age: 21, location: 'बैंगलोर', online: true, rating: 4.7, image: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=150&h=150&fit=crop&crop=face' },
-                { name: 'अंजली', age: 23, location: 'चेन्नई', online: true, rating: 4.6, image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face' },
-                { name: 'रिया', age: 22, location: 'कोलकाता', online: false, rating: 4.9, image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face' },
-                { name: 'पूजा', age: 25, location: 'हैदराबाद', online: true, rating: 4.8, image: 'https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?w=150&h=150&fit=crop&crop=face' },
-                { name: 'सिमरन', age: 20, location: 'पुणे', online: true, rating: 4.5, image: 'https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=150&h=150&fit=crop&crop=face' },
-                { name: 'नीहा', age: 23, location: 'अहमदाबाद', online: false, rating: 4.7, image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&h=150&fit=crop&crop=face' },
-                { name: 'कृतिका', age: 24, location: 'जयपुर', online: true, rating: 4.8, image: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=150&h=150&fit=crop&crop=face' },
-                { name: 'दिव्या', age: 21, location: 'लखनऊ', online: true, rating: 4.6, image: 'https://images.unsplash.com/photo-1517365830460-955ce3ccd263?w=150&h=150&fit=crop&crop=face' }
+                { name: 'प्रिया / Priya', age: 22, location: 'मुंबई / Mumbai', online: true, rating: 4.8, image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face' },
+                { name: 'सोनम / Sonam', age: 24, location: 'दिल्ली / Delhi', online: false, rating: 4.9, image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&h=150&fit=crop&crop=face' },
+                { name: 'नीतू / Neetu', age: 21, location: 'बैंगलोर / Bangalore', online: true, rating: 4.7, image: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=150&h=150&fit=crop&crop=face' },
+                { name: 'अंजली / Anjali', age: 23, location: 'चेन्नई / Chennai', online: true, rating: 4.6, image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face' },
+                { name: 'रिया / Riya', age: 22, location: 'कोलकाता / Kolkata', online: false, rating: 4.9, image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face' },
+                { name: 'पूजा / Pooja', age: 25, location: 'हैदराबाद / Hyderabad', online: true, rating: 4.8, image: 'https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?w=150&h=150&fit=crop&crop=face' },
+                { name: 'सिमरन / Simran', age: 20, location: 'पुणे / Pune', online: true, rating: 4.5, image: 'https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=150&h=150&fit=crop&crop=face' },
+                { name: 'नीहा / Neha', age: 23, location: 'अहमदाबाद / Ahmedabad', online: false, rating: 4.7, image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&h=150&fit=crop&crop=face' },
+                { name: 'कृतिका / Kritika', age: 24, location: 'जयपुर / Jaipur', online: true, rating: 4.8, image: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=150&h=150&fit=crop&crop=face' },
+                { name: 'दिव्या / Divya', age: 21, location: 'लखनऊ / Lucknow', online: true, rating: 4.6, image: 'https://images.unsplash.com/photo-1517365830460-955ce3ccd263?w=150&h=150&fit=crop&crop=face' }
             ];
             
             // Add more girls to reach 50+
@@ -1491,7 +2002,7 @@
                 
                 const age = document.createElement('div');
                 age.className = 'girl-age';
-                age.textContent = `${girl.age} वर्ष`;
+                age.textContent = `${girl.age} वर्ष / Years`;
                 
                 const location = document.createElement('div');
                 location.className = 'girl-location';
@@ -1526,6 +2037,418 @@
                 girlsGrid.appendChild(girlCard);
             });
             
+            // Video Call Interface
+            const videoCallInterface = document.getElementById('videoCallInterface');
+            const acceptCallBtn = document.getElementById('acceptCallBtn');
+            const declineCallBtn = document.getElementById('declineCallBtn');
+            const callStatus = document.getElementById('callStatus');
+            const callTimer = document.getElementById('callTimer');
+            const timerDisplay = document.getElementById('timerDisplay');
+            
+            // Function to start ringing
+            function startRinging() {
+                // Play the ringtone
+                ringtone.play().catch(e => {
+                    console.log("Ringtone play failed:", e);
+                    // In case autoplay is blocked, we'll try to play on user interaction
+                    document.body.addEventListener('click', function() {
+                        ringtone.play();
+                    }, { once: true });
+                });
+            }
+            
+            // Function to stop ringing
+            function stopRinging() {
+                ringtone.pause();
+                ringtone.currentTime = 0;
+            }
+            
+            // Accept Call Button
+            acceptCallBtn.addEventListener('click', function() {
+                // Stop ringing sound
+                stopRinging();
+                
+                // Play call connected sound
+                callConnectedSound.play();
+                
+                if (!currentUser) {
+                    // Show registration popup
+                    videoCallInterface.classList.remove('active');
+                    document.getElementById('registrationPopup').classList.add('active');
+                    return;
+                }
+                
+                // Update call status
+                if (currentLanguage === 'hi') {
+                    callStatus.textContent = "कॉल कनेक्ट हो रही है...";
+                } else {
+                    callStatus.textContent = "Call connecting...";
+                }
+                
+                // Simulate call connection
+                setTimeout(function() {
+                    if (currentLanguage === 'hi') {
+                        callStatus.textContent = "कॉल कनेक्ट हो गई";
+                    } else {
+                        callStatus.textContent = "Call connected";
+                    }
+                    callTimer.style.display = 'block';
+                    
+                    // Start call timer
+                    startCallTimer();
+                    
+                    // Change accept button to end call button
+                    acceptCallBtn.innerHTML = '<i class="fas fa-phone-slash"></i>';
+                    acceptCallBtn.classList.remove('accept-btn');
+                    acceptCallBtn.classList.add('decline-btn');
+                    
+                    // Change decline button to mute button
+                    declineCallBtn.innerHTML = '<i class="fas fa-microphone"></i>';
+                    declineCallBtn.style.background = 'linear-gradient(135deg, #ff9800, #f57c00)';
+                    
+                    // Update click handler for end call
+                    acceptCallBtn.onclick = function() {
+                        endCall();
+                    };
+                    
+                    // Mute button functionality
+                    declineCallBtn.onclick = function() {
+                        const isMuted = declineCallBtn.innerHTML.includes('microphone-slash');
+                        if (isMuted) {
+                            declineCallBtn.innerHTML = '<i class="fas fa-microphone"></i>';
+                            if (currentLanguage === 'hi') {
+                                showNotification("माइक चालू हो गया");
+                            } else {
+                                showNotification("Microphone turned on");
+                            }
+                        } else {
+                            declineCallBtn.innerHTML = '<i class="fas fa-microphone-slash"></i>';
+                            if (currentLanguage === 'hi') {
+                                showNotification("माइक बंद हो गया");
+                            } else {
+                                showNotification("Microphone turned off");
+                            }
+                        }
+                    };
+                }, 2000);
+            });
+            
+            // Decline Call Button
+            declineCallBtn.addEventListener('click', function() {
+                // Stop ringing sound
+                stopRinging();
+                
+                // Play call ended sound
+                callEndedSound.play();
+                
+                endCall();
+            });
+            
+            // Call Timer Function
+            let callSeconds = 0;
+            let callTimerInterval;
+            
+            function startCallTimer() {
+                callSeconds = 0;
+                callTimerInterval = setInterval(function() {
+                    callSeconds++;
+                    const minutes = Math.floor(callSeconds / 60);
+                    const seconds = callSeconds % 60;
+                    timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                    
+                    // Auto-end call after 30 seconds for demo
+                    if (callSeconds >= 30) {
+                        endCall();
+                    }
+                }, 1000);
+            }
+            
+            function endCall() {
+                clearInterval(callTimerInterval);
+                videoCallInterface.classList.remove('active');
+                if (currentLanguage === 'hi') {
+                    showNotification("कॉल समाप्त हो गई");
+                } else {
+                    showNotification("Call ended");
+                }
+                
+                // Reset buttons
+                setTimeout(function() {
+                    acceptCallBtn.innerHTML = '<i class="fas fa-phone"></i>';
+                    acceptCallBtn.classList.remove('decline-btn');
+                    acceptCallBtn.classList.add('accept-btn');
+                    
+                    declineCallBtn.innerHTML = '<i class="fas fa-phone-slash"></i>';
+                    declineCallBtn.style.background = 'linear-gradient(135deg, #f44336, #c62828)';
+                    
+                    if (currentLanguage === 'hi') {
+                        callStatus.textContent = "वीडियो कॉल आ रही है...";
+                    } else {
+                        callStatus.textContent = "Incoming Video Call...";
+                    }
+                    callTimer.style.display = 'none';
+                    
+                    // Reset click handlers
+                    acceptCallBtn.onclick = function() {
+                        // Stop ringing sound
+                        stopRinging();
+                        
+                        // Play call connected sound
+                        callConnectedSound.play();
+                        
+                        if (!currentUser) {
+                            videoCallInterface.classList.remove('active');
+                            document.getElementById('registrationPopup').classList.add('active');
+                            return;
+                        }
+                        
+                        // Update call status
+                        if (currentLanguage === 'hi') {
+                            callStatus.textContent = "कॉल कनेक्ट हो रही है...";
+                        } else {
+                            callStatus.textContent = "Call connecting...";
+                        }
+                        
+                        // Simulate call connection
+                        setTimeout(function() {
+                            if (currentLanguage === 'hi') {
+                                callStatus.textContent = "कॉल कनेक्ट हो गई";
+                            } else {
+                                callStatus.textContent = "Call connected";
+                            }
+                            callTimer.style.display = 'block';
+                            
+                            // Start call timer
+                            startCallTimer();
+                            
+                            // Change accept button to end call button
+                            acceptCallBtn.innerHTML = '<i class="fas fa-phone-slash"></i>';
+                            acceptCallBtn.classList.remove('accept-btn');
+                            acceptCallBtn.classList.add('decline-btn');
+                            
+                            // Change decline button to mute button
+                            declineCallBtn.innerHTML = '<i class="fas fa-microphone"></i>';
+                            declineCallBtn.style.background = 'linear-gradient(135deg, #ff9800, #f57c00)';
+                            
+                            // Update click handler for end call
+                            acceptCallBtn.onclick = function() {
+                                endCall();
+                            };
+                            
+                            // Mute button functionality
+                            declineCallBtn.onclick = function() {
+                                const isMuted = declineCallBtn.innerHTML.includes('microphone-slash');
+                                if (isMuted) {
+                                    declineCallBtn.innerHTML = '<i class="fas fa-microphone"></i>';
+                                    if (currentLanguage === 'hi') {
+                                        showNotification("माइक चालू हो गया");
+                                    } else {
+                                        showNotification("Microphone turned on");
+                                    }
+                                } else {
+                                    declineCallBtn.innerHTML = '<i class="fas fa-microphone-slash"></i>';
+                                    if (currentLanguage === 'hi') {
+                                        showNotification("माइक बंद हो गया");
+                                    } else {
+                                        showNotification("Microphone turned off");
+                                    }
+                                }
+                            };
+                        }, 2000);
+                    };
+                    
+                    declineCallBtn.onclick = function() {
+                        // Stop ringing sound
+                        stopRinging();
+                        
+                        // Play call ended sound
+                        callEndedSound.play();
+                        
+                        endCall();
+                    };
+                }, 1000);
+            }
+            
+            // Reviews Section
+            const reviewsContainer = document.getElementById('reviewsContainer');
+            const reviewsIndicators = document.getElementById('reviewsIndicators');
+            
+            const reviews = [
+                {
+                    content: {
+                        hi: "यह सर्विस बहुत अच्छी है! मैंने कई बार वीडियो कॉल की है और हर बार अनुभव शानदार रहा। गर्ल्स बहुत फ्रेंडली और प्रोफेशनल हैं।",
+                        en: "This service is very good! I've made several video calls and every time the experience has been great. The girls are very friendly and professional."
+                    },
+                    name: "राहुल शर्मा / Rahul Sharma",
+                    location: "दिल्ली / Delhi",
+                    rating: 5,
+                    avatar: "https://randomuser.me/api/portraits/men/32.jpg"
+                },
+                {
+                    content: {
+                        hi: "मैं इस सर्विस से बहुत खुश हूं। वीडियो क्वालिटी बहुत अच्छी है और कोई टेक्निकल प्रॉब्लम नहीं आई। सभी गर्ल्स वेरिफाइड और रियल हैं।",
+                        en: "I'm very happy with this service. Video quality is very good and no technical problems. All girls are verified and real."
+                    },
+                    name: "प्रियंका वर्मा / Priyanka Verma",
+                    location: "मुंबई / Mumbai",
+                    rating: 4,
+                    avatar: "https://randomuser.me/api/portraits/women/44.jpg"
+                },
+                {
+                    content: {
+                        hi: "शुरुआत में मुझे थोड़ा संदेह था, लेकिन अब मैं रेगुलर यूजर हूं। सेफ्टी और प्राइवेसी का ध्यान रखा जाता है। हर किसी को ट्राई करना चाहिए!",
+                        en: "Initially I had some doubts, but now I'm a regular user. Safety and privacy are taken care of. Everyone should try it!"
+                    },
+                    name: "अमित कुमार / Amit Kumar",
+                    location: "बैंगलोर / Bangalore",
+                    rating: 5,
+                    avatar: "https://randomuser.me/api/portraits/men/67.jpg"
+                },
+                {
+                    content: {
+                        hi: "10 शेयर करने के बाद जो फ्री वीडियो कॉल मिली, वह बहुत अच्छी थी। अब मैं प्रीमियम प्लान लेने की सोच रहा हूं। धन्यवाद!",
+                        en: "The free video call I got after 10 shares was very good. Now I'm thinking of taking the premium plan. Thank you!"
+                    },
+                    name: "नीतू सिंह / Neetu Singh",
+                    location: "कोलकाता / Kolkata",
+                    rating: 4,
+                    avatar: "https://randomuser.me/api/portraits/women/68.jpg"
+                },
+                {
+                    content: {
+                        hi: "इतनी आसान और यूजर फ्रेंडली सर्विस मैंने पहले कभी नहीं देखी। रजिस्ट्रेशन सिंपल है और वीडियो कॉल की क्वालिटी बहुत अच्छी है।",
+                        en: "I've never seen such an easy and user-friendly service before. Registration is simple and video call quality is excellent."
+                    },
+                    name: "विकास जैन / Vikas Jain",
+                    location: "हैदराबाद / Hyderabad",
+                    rating: 5,
+                    avatar: "https://randomuser.me/api/portraits/men/75.jpg"
+                },
+                {
+                    content: {
+                        hi: "मैंने कई ऐप्स ट्राई किए हैं, लेकिन यह सबसे बेस्ट है। गर्ल्स की वैरायटी बहुत अच्छी है और हर एक का अलग अंदाज है। बहुत मजा आता है!",
+                        en: "I've tried many apps, but this is the best. The variety of girls is great and each has a different style. Very enjoyable!"
+                    },
+                    name: "सोनम गुप्ता / Sonam Gupta",
+                    location: "चेन्नई / Chennai",
+                    rating: 4,
+                    avatar: "https://randomuser.me/api/portraits/women/26.jpg"
+                },
+                {
+                    content: {
+                        hi: "शेयर करके फ्री वीडियो कॉल पाने का आइडिया बहुत बढ़िया है। मैंने अपने दोस्तों को भी रेफर किया है और उन्हें भी सर्विस पसंद आई।",
+                        en: "The idea of getting free video calls by sharing is great. I've referred my friends too and they also liked the service."
+                    },
+                    name: "राजीव मल्होत्रा / Rajiv Malhotra",
+                    location: "पुणे / Pune",
+                    rating: 5,
+                    avatar: "https://randomuser.me/api/portraits/men/55.jpg"
+                },
+                {
+                    content: {
+                        hi: "24/7 सपोर्ट उपलब्ध है, यह सबसे अच्छी बात है। मुझे एक बार टेक्निकल प्रॉब्लम आई थी, लेकिन सपोर्ट टीम ने तुरंत हल कर दिया।",
+                        en: "24/7 support is available, that's the best thing. I once had a technical problem, but the support team solved it immediately."
+                    },
+                    name: "अनुपमा रेड्डी / Anupama Reddy",
+                    location: "अहमदाबाद / Ahmedabad",
+                    rating: 4,
+                    avatar: "https://randomuser.me/api/portraits/women/57.jpg"
+                }
+            ];
+            
+            // Create review elements
+            reviews.forEach((review, index) => {
+                // Create review element
+                const reviewElement = document.createElement('div');
+                reviewElement.className = 'review';
+                if (index === 0) reviewElement.classList.add('active');
+                
+                const reviewContent = document.createElement('div');
+                reviewContent.className = 'review-content';
+                reviewContent.textContent = `"${review.content.hi}"`;
+                reviewContent.setAttribute('data-hi', `"${review.content.hi}"`);
+                reviewContent.setAttribute('data-en', `"${review.content.en}"`);
+                
+                const reviewAuthor = document.createElement('div');
+                reviewAuthor.className = 'review-author';
+                
+                const reviewAvatar = document.createElement('div');
+                reviewAvatar.className = 'review-avatar';
+                const avatarImg = document.createElement('img');
+                avatarImg.src = review.avatar;
+                avatarImg.alt = review.name;
+                reviewAvatar.appendChild(avatarImg);
+                
+                const reviewInfo = document.createElement('div');
+                reviewInfo.className = 'review-info';
+                
+                const reviewName = document.createElement('div');
+                reviewName.className = 'review-name';
+                reviewName.textContent = review.name;
+                
+                const reviewLocation = document.createElement('div');
+                reviewLocation.className = 'review-location';
+                reviewLocation.textContent = review.location;
+                
+                const reviewRating = document.createElement('div');
+                reviewRating.className = 'review-rating';
+                reviewRating.innerHTML = '★ '.repeat(review.rating) + '☆ '.repeat(5 - review.rating);
+                
+                reviewInfo.appendChild(reviewName);
+                reviewInfo.appendChild(reviewLocation);
+                reviewInfo.appendChild(reviewRating);
+                
+                reviewAuthor.appendChild(reviewAvatar);
+                reviewAuthor.appendChild(reviewInfo);
+                
+                reviewElement.appendChild(reviewContent);
+                reviewElement.appendChild(reviewAuthor);
+                
+                reviewsContainer.appendChild(reviewElement);
+                
+                // Create indicator
+                const indicator = document.createElement('div');
+                indicator.className = 'indicator';
+                if (index === 0) indicator.classList.add('active');
+                indicator.dataset.index = index;
+                
+                indicator.addEventListener('click', function() {
+                    showReview(parseInt(this.dataset.index));
+                });
+                
+                reviewsIndicators.appendChild(indicator);
+            });
+            
+            // Auto-rotate reviews
+            let currentReviewIndex = 0;
+            const totalReviews = reviews.length;
+            
+            function showReview(index) {
+                // Hide current review
+                document.querySelectorAll('.review').forEach(review => {
+                    review.classList.remove('active');
+                });
+                
+                // Show selected review
+                document.querySelectorAll('.review')[index].classList.add('active');
+                
+                // Update indicators
+                document.querySelectorAll('.indicator').forEach(indicator => {
+                    indicator.classList.remove('active');
+                });
+                document.querySelectorAll('.indicator')[index].classList.add('active');
+                
+                currentReviewIndex = index;
+            }
+            
+            function nextReview() {
+                currentReviewIndex = (currentReviewIndex + 1) % totalReviews;
+                showReview(currentReviewIndex);
+            }
+            
+            // Auto-rotate every 5 seconds
+            setInterval(nextReview, 5000);
+            
             // Check if user is already logged in
             checkAuthState();
             
@@ -1556,9 +2479,6 @@
                 document.getElementById('shareOptions').style.display = 'block';
             });
             
-            // Share message template
-            const shareMessage = "🔥 *Premium Indian Girls Video Call Service* 🔥\n\nमैंने इस प्रीमियम सर्विस का इस्तेमाल किया है! आप भी फ्री वीडियो कॉल पाने के लिए शेयर करें!\n\nयहां क्लिक करें और अभी शुरू करें:\nhttps://video-call-service-w21f.vercel.app/\n\n*50+ प्रीमियम इंडियन गर्ल्स आपका इंतज़ार कर रही हैं!* 💖";
-            
             // Function to handle share with rewards
             async function handleShareWithRewards() {
                 if (!currentUser) {
@@ -1574,28 +2494,53 @@
                 const achievedMilestone = milestones.find(m => shareCount === m);
                 
                 if (achievedMilestone) {
-                    let rewardMessage = `बधाई! ${achievedMilestone} शेयर पूरे - `;
+                    let rewardMessage = "";
                     
-                    switch(achievedMilestone) {
-                        case 2:
-                            rewardMessage += "अतिरिक्त 5 मिनट वीडियो कॉल मिला!";
-                            break;
-                        case 5:
-                            rewardMessage += "प्रीमियम गर्ल्स की एक्सेस मिली!";
-                            break;
-                        case 7:
-                            rewardMessage += "विशेष गिफ्ट प्राप्त हुआ!";
-                            break;
-                        case 10:
-                            rewardMessage += "फुल App डाउनलोड एक्टिवेट हुआ! 🎉";
-                            break;
+                    if (currentLanguage === 'hi') {
+                        rewardMessage = `बधाई! ${achievedMilestone} शेयर पूरे - `;
+                        
+                        switch(achievedMilestone) {
+                            case 2:
+                                rewardMessage += "अतिरिक्त 5 मिनट वीडियो कॉल मिला!";
+                                break;
+                            case 5:
+                                rewardMessage += "प्रीमियम गर्ल्स की एक्सेस मिली!";
+                                break;
+                            case 7:
+                                rewardMessage += "विशेष गिफ्ट प्राप्त हुआ!";
+                                break;
+                            case 10:
+                                rewardMessage += "फुल App डाउनलोड एक्टिवेट हुआ! 🎉";
+                                break;
+                        }
+                    } else {
+                        rewardMessage = `Congratulations! ${achievedMilestone} shares completed - `;
+                        
+                        switch(achievedMilestone) {
+                            case 2:
+                                rewardMessage += "Extra 5 minutes video call received!";
+                                break;
+                            case 5:
+                                rewardMessage += "Premium girls access received!";
+                                break;
+                            case 7:
+                                rewardMessage += "Special gift received!";
+                                break;
+                            case 10:
+                                rewardMessage += "Full App download activated! 🎉";
+                                break;
+                        }
                     }
                     
                     showNotification(rewardMessage);
                 }
                 
                 updateProgress();
-                showNotification('शेयर सफल! प्रगति बढ़ी');
+                if (currentLanguage === 'hi') {
+                    showNotification('शेयर सफल! प्रगति बढ़ी');
+                } else {
+                    showNotification('Share successful! Progress increased');
+                }
             }
             
             // Direct WhatsApp share
@@ -1639,7 +2584,11 @@
                 }
                 
                 if (shareCount < 10) {
-                    showNotification('पहले 10 शेयर पूरे करें!');
+                    if (currentLanguage === 'hi') {
+                        showNotification('पहले 10 शेयर पूरे करें!');
+                    } else {
+                        showNotification('Complete 10 shares first!');
+                    }
                     return;
                 }
                 
@@ -1674,7 +2623,11 @@
                 if (shareCount >= 10) {
                     window.open(appDownloadLink, '_blank');
                 } else {
-                    showNotification('पहले 10 शेयर पूरे करें!');
+                    if (currentLanguage === 'hi') {
+                        showNotification('पहले 10 शेयर पूरे करें!');
+                    } else {
+                        showNotification('Complete 10 shares first!');
+                    }
                     document.getElementById('progressSection').scrollIntoView({ behavior: 'smooth' });
                 }
             });
@@ -1685,7 +2638,11 @@
                     document.getElementById('registrationPopup').classList.add('active');
                     return;
                 }
-                showNotification('वॉइस मैसेज चल रहा है...');
+                if (currentLanguage === 'hi') {
+                    showNotification('वॉइस मैसेज चल रहा है...');
+                } else {
+                    showNotification('Voice message playing...');
+                }
                 // In a real app, you would play actual audio here
             });
             
@@ -1695,7 +2652,11 @@
                     return;
                 }
                 handleShareWithRewards();
-                showNotification('वॉइस मैसेज शेयर किया गया!');
+                if (currentLanguage === 'hi') {
+                    showNotification('वॉइस मैसेज शेयर किया गया!');
+                } else {
+                    showNotification('Voice message shared!');
+                }
             });
             
             // Registration Popup Buttons
@@ -1705,12 +2666,20 @@
                 
                 // Basic validation
                 if (mobileNumber.length !== 10) {
-                    showNotification('कृपया सही मोबाइल नंबर दर्ज करें (10 अंक)');
+                    if (currentLanguage === 'hi') {
+                        showNotification('कृपया सही मोबाइल नंबर दर्ज करें (10 अंक)');
+                    } else {
+                        showNotification('Please enter correct mobile number (10 digits)');
+                    }
                     return;
                 }
                 
                 if (password.length < 6) {
-                    showNotification('पासवर्ड कम से कम 6 अक्षर का होना चाहिए');
+                    if (currentLanguage === 'hi') {
+                        showNotification('पासवर्ड कम से कम 6 अक्षर का होना चाहिए');
+                    } else {
+                        showNotification('Password must be at least 6 characters');
+                    }
                     return;
                 }
                 
@@ -1724,12 +2693,20 @@
                 if (existingUser) {
                     // User exists, check password
                     if (existingUser.password !== password) {
-                        showNotification('गलत पासवर्ड! कृपया दोबारा प्रयास करें');
+                        if (currentLanguage === 'hi') {
+                            showNotification('गलत पासवर्ड! कृपया दोबारा प्रयास करें');
+                        } else {
+                            showNotification('Wrong password! Please try again');
+                        }
                         return;
                     }
                     
                     // Login successful
-                    showNotification('लॉगिन सफल!');
+                    if (currentLanguage === 'hi') {
+                        showNotification('लॉगिन सफल!');
+                    } else {
+                        showNotification('Login successful!');
+                    }
                     document.getElementById('registrationPopup').classList.remove('active');
                     
                     // Set current user
@@ -1754,11 +2731,19 @@
                     .select();
 
                 if (error) {
-                    showNotification('रजिस्ट्रेशन में त्रुटि: ' + error.message);
+                    if (currentLanguage === 'hi') {
+                        showNotification('रजिस्ट्रेशन में त्रुटि: ' + error.message);
+                    } else {
+                        showNotification('Registration error: ' + error.message);
+                    }
                     return;
                 }
                 
-                showNotification('रजिस्ट्रेशन सफल! अब आप शेयर कर सकते हैं');
+                if (currentLanguage === 'hi') {
+                    showNotification('रजिस्ट्रेशन सफल! अब आप शेयर कर सकते हैं');
+                } else {
+                    showNotification('Registration successful! Now you can share');
+                }
                 
                 // Close registration popup
                 document.getElementById('registrationPopup').classList.remove('active');
@@ -1808,7 +2793,7 @@
                             if (hours === 0) {
                                 clearInterval(timer);
                                 // Offer expired logic
-                                document.querySelector('.premium-offer').textContent = 'ऑफर समाप्त!';
+                                document.querySelector('.premium-offer').textContent = currentLanguage === 'hi' ? 'ऑफर समाप्त!' : 'Offer Expired!';
                                 return;
                             }
                             hours--;
@@ -1896,7 +2881,11 @@
                     const milestoneElement = document.createElement('div');
                     milestoneElement.className = `milestone ${milestone <= shareCount ? 'active' : ''}`;
                     milestoneElement.textContent = milestone;
-                    milestoneElement.title = `${milestone} शेयर पर रिवॉर्ड`;
+                    if (currentLanguage === 'hi') {
+                        milestoneElement.title = `${milestone} शेयर पर रिवॉर्ड`;
+                    } else {
+                        milestoneElement.title = `Reward at ${milestone} shares`;
+                    }
                     
                     if (milestone === 10) {
                         milestoneElement.classList.add('reward');
@@ -1919,8 +2908,20 @@
                 const winAnimation = document.getElementById('winAnimation');
                 
                 progressBar.style.width = percentage + '%';
-                progressText.textContent = `${shareCount}/10 शेयर पूरे`;
-                shareCountElement.textContent = `आपने ${shareCount} बार शेयर किया है`;
+                
+                if (currentLanguage === 'hi') {
+                    progressText.textContent = `${shareCount}/10 शेयर पूरे`;
+                    shareCountElement.textContent = `आपने ${shareCount} बार शेयर किया है`;
+                    videoCallMessage.textContent = shareCount >= 10 ? 
+                        'App डाउनलोड एक्टिव है! क्लिक करके डाउनलोड करें' : 
+                        '10 शेयर पूरे करने पर App डाउनलोड एक्टिव होगा';
+                } else {
+                    progressText.textContent = `${shareCount}/10 Shares Completed`;
+                    shareCountElement.textContent = `You have shared ${shareCount} times`;
+                    videoCallMessage.textContent = shareCount >= 10 ? 
+                        'App download is active! Click to download' : 
+                        'App download will be activated after completing 10 shares';
+                }
                 
                 // Update milestones
                 const milestoneElements = document.querySelectorAll('.milestone');
@@ -1936,7 +2937,6 @@
                 
                 if (shareCount >= 10) {
                     videoCallBtn.style.display = 'inline-block';
-                    videoCallMessage.textContent = 'App डाउनलोड एक्टिव है! क्लिक करके डाउनलोड करें';
                     winAnimation.classList.add('active');
                 }
             }
