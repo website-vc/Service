@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image to URL Converter</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #2b1055, #7597de);
+      color: #fff;
+      text-align: center;
+      padding: 50px 20px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 30px;
+      max-width: 600px;
+      margin: auto;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+    }
+
+    input[type="file"] {
+      padding: 10px;
+      background: #fff;
+      color: #000;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+
+    button {
+      margin-top: 20px;
+      background: #00c896;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #00a67d;
+    }
+
+    #preview {
+      margin-top: 20px;
+      max-width: 100%;
+      border-radius: 10px;
+    }
+
+    #outputLink {
+      margin-top: 20px;
+      display: block;
+      word-wrap: break-word;
+      color: #ffdd57;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+  <h1>🖼️ Image to URL Converter</h1>
+  <div class="container">
+    <p>Select an image to convert it into a shareable URL.</p>
+    <input type="file" id="imageInput" accept="image/*"><br>
+    <button onclick="convertImage()">Generate Image URL</button>
+
+    <img id="preview" src="" alt="" hidden>
+    <a id="outputLink" href="#" target="_blank"></a>
+  </div>
+
+  <footer>Made with ❤️ | Multi Tool Hub</footer>
+
+  <script>
+    function convertImage() {
+      const input = document.getElementById('imageInput');
+      const preview = document.getElementById('preview');
+      const outputLink = document.getElementById('outputLink');
+
+      if (!input.files.length) {
+        alert("Please select an image first!");
+        return;
+      }
+
+      const file = input.files[0];
+      const reader = new FileReader();
+
+      reader.onload = function(e) {
+        const imageData = e.target.result;
+
+        // Set image preview
+        preview.src = imageData;
+        preview.hidden = false;
+
+        // Generate a “viewable” link using Base64 Data URL
+        const encoded = encodeURIComponent(imageData);
+        const shareableURL = `${window.location.origin}${window.location.pathname}?image=${encoded}`;
+
+        outputLink.href = shareableURL;
+        outputLink.textContent = shareableURL;
+      };
+
+      reader.readAsDataURL(file);
+    }
+
+    // If a URL contains ?image=... then auto-display that image
+    const params = new URLSearchParams(window.location.search);
+    const imageParam = params.get('image');
+    if (imageParam) {
+      const decodedImage = decodeURIComponent(imageParam);
+      const container = document.querySelector('.container');
+      container.innerHTML = `
+        <h2>📷 Shared Image</h2>
+        <img src="${decodedImage}" style="max-width:100%; border-radius:10px;">
+        <br><a href="/" style="color:#00c896;">⬅️ Upload Another Image</a>
+      `;
+    }
+  </script>
+</body>
+</html>
