@@ -1836,6 +1836,301 @@
     </div>
 
     <script>
+        // Enhanced Girls Data with Unique Images
+        const girlsData = [
+            { 
+                id: 1,
+                name: 'Priya', 
+                age: 22, 
+                location: 'Mumbai', 
+                online: true, 
+                rating: 4.8, 
+                image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face' 
+            },
+            { 
+                id: 2,
+                name: 'Sonam', 
+                age: 24, 
+                location: 'Delhi', 
+                online: false, 
+                rating: 4.9, 
+                image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&h=150&fit=crop&crop=face' 
+            },
+            { 
+                id: 3,
+                name: 'Neetu', 
+                age: 21, 
+                location: 'Bangalore', 
+                online: true, 
+                rating: 4.7, 
+                image: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=150&h=150&fit=crop&crop=face' 
+            },
+            { 
+                id: 4,
+                name: 'Anjali', 
+                age: 23, 
+                location: 'Chennai', 
+                online: true, 
+                rating: 4.6, 
+                image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face' 
+            },
+            { 
+                id: 5,
+                name: 'Riya', 
+                age: 22, 
+                location: 'Kolkata', 
+                online: false, 
+                rating: 4.9, 
+                image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face' 
+            },
+            { 
+                id: 6,
+                name: 'Pooja', 
+                age: 25, 
+                location: 'Hyderabad', 
+                online: true, 
+                rating: 4.8, 
+                image: 'https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?w=150&h=150&fit=crop&crop=face' 
+            },
+            { 
+                id: 7,
+                name: 'Simran', 
+                age: 20, 
+                location: 'Pune', 
+                online: true, 
+                rating: 4.5, 
+                image: 'https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=150&h=150&fit=crop&crop=face' 
+            },
+            { 
+                id: 8,
+                name: 'Neha', 
+                age: 23, 
+                location: 'Ahmedabad', 
+                online: false, 
+                rating: 4.7, 
+                image: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=150&h=150&fit=crop&crop=face' 
+            },
+            { 
+                id: 9,
+                name: 'Kritika', 
+                age: 24, 
+                location: 'Jaipur', 
+                online: true, 
+                rating: 4.8, 
+                image: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=150&h=150&fit=crop&crop=face' 
+            },
+            { 
+                id: 10,
+                name: 'Divya', 
+                age: 21, 
+                location: 'Lucknow', 
+                online: true, 
+                rating: 4.6, 
+                image: 'https://images.unsplash.com/photo-1517365830460-955ce3ccd263?w=150&h=150&fit=crop&crop=face' 
+            },
+            { 
+                id: 11,
+                name: 'Madhuri', 
+                age: 23, 
+                location: 'Indore', 
+                online: false, 
+                rating: 4.7, 
+                image: 'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=150&h=150&fit=crop&crop=face' 
+            },
+            { 
+                id: 12,
+                name: 'Sakshi', 
+                age: 22, 
+                location: 'Bhopal', 
+                online: true, 
+                rating: 4.5, 
+                image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face' 
+            },
+            { 
+                id: 13,
+                name: 'Ananya', 
+                age: 24, 
+                location: 'Surat', 
+                online: true, 
+                rating: 4.8, 
+                image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face' 
+            },
+            { 
+                id: 14,
+                name: 'Tanvi', 
+                age: 20, 
+                location: 'Vadodara', 
+                online: false, 
+                rating: 4.6, 
+                image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face' 
+            },
+            { 
+                id: 15,
+                name: 'Isha', 
+                age: 25, 
+                location: 'Nagpur', 
+                online: true, 
+                rating: 4.9, 
+                image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&h=150&fit=crop&crop=face' 
+            }
+        ];
+
+        // Function to generate additional girls to reach 50+
+        function generateAdditionalGirls() {
+            const additionalGirls = [];
+            const locations = ['Mumbai', 'Delhi', 'Bangalore', 'Chennai', 'Kolkata', 'Hyderabad', 'Pune', 'Ahmedabad', 'Jaipur', 'Lucknow'];
+            const names = ['Sneha', 'Monika', 'Kajal', 'Shweta', 'Geetika', 'Payal', 'Aditi', 'Ritika', 'Janhvi', 'Mansi'];
+            
+            // Unique image sources for additional girls
+            const imageSources = [
+                'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=150&h=150&fit=crop&crop=face',
+                'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&h=150&fit=crop&crop=face',
+                'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=150&h=150&fit=crop&crop=face',
+                'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face',
+                'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face',
+                'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
+                'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=150&h=150&fit=crop&crop=face',
+                'https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=150&h=150&fit=crop&crop=face',
+                'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=150&h=150&fit=crop&crop=face',
+                'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=150&h=150&fit=crop&crop=face',
+                'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face',
+                'https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?w=150&h=150&fit=crop&crop=face',
+                'https://images.unsplash.com/photo-1517365830460-955ce3ccd263?w=150&h=150&fit=crop&crop=face',
+                'https://images.unsplash.com/photo-1503185912284-5271ff81b9a8?w=150&h=150&fit=crop&crop=face',
+                'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&h=150&fit=crop&crop=face',
+                'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face',
+                'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=150&h=150&fit=crop&crop=face',
+                'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face',
+                'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
+                'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=150&h=150&fit=crop&crop=face'
+            ];
+            
+            for (let i = 16; i <= 50; i++) {
+                const nameIndex = Math.floor(Math.random() * names.length);
+                const locationIndex = Math.floor(Math.random() * locations.length);
+                const imageIndex = (i - 16) % imageSources.length; // Cycle through image sources
+                
+                additionalGirls.push({
+                    id: i,
+                    name: names[nameIndex] + ' ' + i,
+                    age: 18 + Math.floor(Math.random() * 10),
+                    location: locations[locationIndex],
+                    online: Math.random() > 0.5,
+                    rating: 4.0 + (Math.random() * 1.0),
+                    image: imageSources[imageIndex]
+                });
+            }
+            
+            return additionalGirls;
+        }
+
+        // Function to initialize girls grid
+        function initializeGirlsGrid() {
+            const girlsGrid = document.getElementById('girlsGrid');
+            girlsGrid.innerHTML = ''; // Clear existing content
+            
+            // Combine initial girls with additional generated girls
+            const allGirls = [...girlsData, ...generateAdditionalGirls()];
+            
+            allGirls.forEach(girl => {
+                const girlCard = document.createElement('div');
+                girlCard.className = 'girl-card';
+                
+                if (girl.online) {
+                    const onlineStatus = document.createElement('div');
+                    onlineStatus.className = 'online-status';
+                    girlCard.appendChild(onlineStatus);
+                }
+                
+                const avatar = document.createElement('div');
+                avatar.className = 'girl-avatar';
+                const img = document.createElement('img');
+                img.src = girl.image;
+                img.alt = girl.name;
+                img.onerror = function() {
+                    // If image fails to load, show placeholder
+                    this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iNDAiIGN5PSI0MCIgcj0iNDAiIGZpbGw9IiNlODQzOTMiLz4KPHBhdGggZD0iTTQwIDQ0QzQzLjMxMzcgNDQgNDYgNDEuMzEzNyA0NiAzOEM0NiAzNC42ODYzIDQzLjMxMzcgMzIgNDAgMzJDMzYuNjg2MyAzMiAzNCAzNC42ODYzIDM0IDM4QzM0IDQxLjMxMzcgMzYuNjg2MyA0NCA0MCA0NFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0zNCA1MkM0MS43MzE5IDUyIDQ4IDQ1LjczMTkgNDggMzhDNDggMzAuMjY4MSA0MS43MzE5IDI0IDM0IDI0QzI2LjI2ODEgMjQgMjAgMzAuMjY4MSAyMCAzOEMyMCA0NS43MzE5IDI2LjI2ODEgNTIgMzQgNTJaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K';
+                };
+                avatar.appendChild(img);
+                
+                const name = document.createElement('div');
+                name.className = 'girl-name';
+                name.textContent = girl.name;
+                
+                const age = document.createElement('div');
+                age.className = 'girl-age';
+                age.textContent = `${girl.age} वर्ष / Years`;
+                
+                const location = document.createElement('div');
+                location.className = 'girl-location';
+                location.textContent = girl.location;
+                
+                const rating = document.createElement('div');
+                rating.className = 'rating';
+                rating.innerHTML = '★ '.repeat(Math.floor(girl.rating)) + '☆ '.repeat(5 - Math.floor(girl.rating));
+                rating.innerHTML += ` ${girl.rating.toFixed(1)}`;
+                
+                girlCard.appendChild(avatar);
+                girlCard.appendChild(name);
+                girlCard.appendChild(age);
+                girlCard.appendChild(location);
+                girlCard.appendChild(rating);
+                
+                // Add click event to show registration popup if not registered
+                girlCard.addEventListener('click', function() {
+                    if (!currentUser) {
+                        document.getElementById('registrationPopup').classList.add('active');
+                        return;
+                    }
+                    
+                    if (shareCount < 10) {
+                        document.getElementById('rulesPopup').classList.add('active');
+                    } else {
+                        // If shares completed, redirect to app download
+                        window.open(appDownloadLink, '_blank');
+                    }
+                });
+                
+                girlsGrid.appendChild(girlCard);
+            });
+        }
+
+        // Function to update a specific girl's image
+        function updateGirlImage(girlId, newImageUrl) {
+            // Find the girl by ID and update her image
+            const girlIndex = girlsData.findIndex(girl => girl.id === girlId);
+            if (girlIndex !== -1) {
+                girlsData[girlIndex].image = newImageUrl;
+                // Reinitialize the grid to reflect the change
+                initializeGirlsGrid();
+            }
+        }
+
+        // Function to add a new girl
+        function addNewGirl(name, age, location, imageUrl, online = false, rating = 4.5) {
+            const newId = girlsData.length > 0 ? Math.max(...girlsData.map(g => g.id)) + 1 : 1;
+            const newGirl = {
+                id: newId,
+                name,
+                age,
+                location,
+                online,
+                rating,
+                image: imageUrl
+            };
+            girlsData.push(newGirl);
+            initializeGirlsGrid();
+        }
+
+        // Function to remove a girl
+        function removeGirl(girlId) {
+            const girlIndex = girlsData.findIndex(girl => girl.id === girlId);
+            if (girlIndex !== -1) {
+                girlsData.splice(girlIndex, 1);
+                initializeGirlsGrid();
+            }
+        }
+
         // Language Management
         let currentLanguage = 'hi'; // Default language is Hindi
         
@@ -1875,21 +2170,6 @@
             }
         }
         
-        // Initialize language on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            // Check for saved language preference
-            const savedLanguage = localStorage.getItem('preferredLanguage');
-            if (savedLanguage) {
-                changeLanguage(savedLanguage);
-            }
-            
-            // Set up language toggle buttons
-            document.getElementById('hindiBtn').addEventListener('click', () => changeLanguage('hi'));
-            document.getElementById('englishBtn').addEventListener('click', () => changeLanguage('en'));
-            
-            // Rest of your existing JavaScript code...
-        });
-
         // Supabase Configuration
         const SUPABASE_URL = 'https://vjsovrmmnpuwjtuczwig.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZqc292cm1tbnB1d2p0dWN6d2lnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjE3MjQxNDEsImV4cCI6MjA3NzMwMDE0MX0.HMLd6iliqp2mmfuZ5meLA9KXMCKLJ6l0HXvIMZkwmXk';
@@ -1907,8 +2187,21 @@
         let shareMessage = "🔥 *Premium Indian Girls Video Call Service* 🔥\n\nमैंने इस प्रीमियम सर्विस का इस्तेमाल किया है! आप भी फ्री वीडियो कॉल पाने के लिए शेयर करें!\n\nयहां क्लिक करें और अभी शुरू करें:\nhttps://video-call-service-w21f.vercel.app/\n\n*50+ प्रीमियम इंडियन गर्ल्स आपका इंतज़ार कर रही हैं!* 💖";
         let ringtone, callConnectedSound, callEndedSound;
 
-        // Entry animation
+        // Initialize the girls grid when the DOM is loaded
         document.addEventListener('DOMContentLoaded', function() {
+            // Check for saved language preference
+            const savedLanguage = localStorage.getItem('preferredLanguage');
+            if (savedLanguage) {
+                changeLanguage(savedLanguage);
+            }
+            
+            // Set up language toggle buttons
+            document.getElementById('hindiBtn').addEventListener('click', () => changeLanguage('hi'));
+            document.getElementById('englishBtn').addEventListener('click', () => changeLanguage('en'));
+            
+            // Initialize girls grid with enhanced data
+            initializeGirlsGrid();
+            
             const entryAnimation = document.getElementById('entryAnimation');
             
             // Initialize sounds
@@ -1946,96 +2239,6 @@
                 heart.style.animationDelay = Math.random() * 5 + 's';
                 floatingHearts.appendChild(heart);
             }
-            
-            // Initialize girls grid with 50+ profiles
-            const girlsGrid = document.getElementById('girlsGrid');
-            const girls = [
-                { name: 'प्रिया / Priya', age: 22, location: 'मुंबई / Mumbai', online: true, rating: 4.8, image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face' },
-                { name: 'सोनम / Sonam', age: 24, location: 'दिल्ली / Delhi', online: false, rating: 4.9, image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&h=150&fit=crop&crop=face' },
-                { name: 'नीतू / Neetu', age: 21, location: 'बैंगलोर / Bangalore', online: true, rating: 4.7, image: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=150&h=150&fit=crop&crop=face' },
-                { name: 'अंजली / Anjali', age: 23, location: 'चेन्नई / Chennai', online: true, rating: 4.6, image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face' },
-                { name: 'रिया / Riya', age: 22, location: 'कोलकाता / Kolkata', online: false, rating: 4.9, image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face' },
-                { name: 'पूजा / Pooja', age: 25, location: 'हैदराबाद / Hyderabad', online: true, rating: 4.8, image: 'https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?w=150&h=150&fit=crop&crop=face' },
-                { name: 'सिमरन / Simran', age: 20, location: 'पुणे / Pune', online: true, rating: 4.5, image: 'https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=150&h=150&fit=crop&crop=face' },
-                { name: 'नीहा / Neha', age: 23, location: 'अहमदाबाद / Ahmedabad', online: false, rating: 4.7, image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&h=150&fit=crop&crop=face' },
-                { name: 'कृतिका / Kritika', age: 24, location: 'जयपुर / Jaipur', online: true, rating: 4.8, image: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=150&h=150&fit=crop&crop=face' },
-                { name: 'दिव्या / Divya', age: 21, location: 'लखनऊ / Lucknow', online: true, rating: 4.6, image: 'https://images.unsplash.com/photo-1517365830460-955ce3ccd263?w=150&h=150&fit=crop&crop=face' }
-            ];
-            
-            // Add more girls to reach 50+
-            for (let i = 21; i <= 50; i++) {
-                const randomGirl = girls[Math.floor(Math.random() * girls.length)];
-                girls.push({
-                    ...randomGirl,
-                    name: randomGirl.name + ' ' + i,
-                    age: randomGirl.age + (i % 3),
-                    location: randomGirl.location,
-                    online: Math.random() > 0.5,
-                    rating: 4.5 + (Math.random() * 0.5)
-                });
-            }
-            
-            girls.forEach(girl => {
-                const girlCard = document.createElement('div');
-                girlCard.className = 'girl-card';
-                
-                if (girl.online) {
-                    const onlineStatus = document.createElement('div');
-                    onlineStatus.className = 'online-status';
-                    girlCard.appendChild(onlineStatus);
-                }
-                
-                const avatar = document.createElement('div');
-                avatar.className = 'girl-avatar';
-                const img = document.createElement('img');
-                img.src = girl.image;
-                img.alt = girl.name;
-                img.onerror = function() {
-                    // If image fails to load, show placeholder
-                    this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iNDAiIGN5PSI0MCIgcj0iNDAiIGZpbGw9IiNlODQzOTMiLz4KPHBhdGggZD0iTTQwIDQ0QzQzLjMxMzcgNDQgNDYgNDEuMzEzNyA0NiAzOEM0NiAzNC42ODYzIDQzLjMxMzcgMzIgNDAgMzJDMzYuNjg2MyAzMiAzNCAzNC42ODYzIDM0IDM4QzM0IDQxLjMxMzcgMzYuNjg2MyA0NCA0MCA0NFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0zNCA1MkM0MS43MzE5IDUyIDQ4IDQ1LjczMTkgNDggMzhDNDggMzAuMjY4MSA0MS43MzE5IDI0IDM0IDI0QzI2LjI2ODEgMjQgMjAgMzAuMjY4MSAyMCAzOEMyMCA0NS43MzE5IDI2LjI2ODEgNTIgMzQgNTJaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K';
-                };
-                avatar.appendChild(img);
-                
-                const name = document.createElement('div');
-                name.className = 'girl-name';
-                name.textContent = girl.name;
-                
-                const age = document.createElement('div');
-                age.className = 'girl-age';
-                age.textContent = `${girl.age} वर्ष / Years`;
-                
-                const location = document.createElement('div');
-                location.className = 'girl-location';
-                location.textContent = girl.location;
-                
-                const rating = document.createElement('div');
-                rating.className = 'rating';
-                rating.innerHTML = '★ '.repeat(Math.floor(girl.rating)) + '☆ '.repeat(5 - Math.floor(girl.rating));
-                rating.innerHTML += ` ${girl.rating}`;
-                
-                girlCard.appendChild(avatar);
-                girlCard.appendChild(name);
-                girlCard.appendChild(age);
-                girlCard.appendChild(location);
-                girlCard.appendChild(rating);
-                
-                // Add click event to show registration popup if not registered
-                girlCard.addEventListener('click', function() {
-                    if (!currentUser) {
-                        document.getElementById('registrationPopup').classList.add('active');
-                        return;
-                    }
-                    
-                    if (shareCount < 10) {
-                        document.getElementById('rulesPopup').classList.add('active');
-                    } else {
-                        // If shares completed, redirect to app download
-                        window.open(appDownloadLink, '_blank');
-                    }
-                });
-                
-                girlsGrid.appendChild(girlCard);
-            });
             
             // Video Call Interface
             const videoCallInterface = document.getElementById('videoCallInterface');
@@ -2945,6 +3148,11 @@
             startCountdown();
             animateStats();
         });
+
+        // Example usage of the update functions:
+        // To update a girl's image: updateGirlImage(1, 'https://example.com/new-image.jpg');
+        // To add a new girl: addNewGirl('नया नाम / New Name', 22, 'नई लोकेशन / New Location', 'https://example.com/image.jpg');
+        // To remove a girl: removeGirl(1);
     </script>
 </body>
 </html>
